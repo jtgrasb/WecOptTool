@@ -245,6 +245,7 @@ def irregular_wave(efth: DataArray,
                    seed: Optional[float] = None,) -> DataArray:
     """Create a complex frequency-domain wave elevation from a spectrum.
 
+
     The omnidirectional spectrum is in the
     :py:class:`wavespectra.SpecArray` format.
 
