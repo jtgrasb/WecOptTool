@@ -27,6 +27,7 @@ dependencies = [
     "joblib",
     "wavespectra>=3.13",
     "netcdf4",
+    "cyipopt",
 ]
 
 [project.optional-dependencies]
