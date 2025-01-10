@@ -574,7 +574,8 @@ class WEC:
                   inertia_in_forces=True, ndof=shape[1])
         return wec
 
-    def residual(self, x_wec: ndarray, x_opt: ndarray, waves: Dataset,
+    def residual(self, x_wec: ndarray, x_opt: ndarray, waves: Dataset, 
+                 resid_dofs: ndarray,
         ) -> float:
         """
         Return the residual of the dynamic equation (r = m⋅a-Σf).
@@ -590,12 +591,12 @@ class WEC:
             shown by :py:mod:`wecopttool.waves`.
         """
         if not self.inertia_in_forces:
-            ri = self.inertia(self, x_wec, x_opt, waves)
+            ri = self.inertia(self, x_wec, x_opt, waves)[:,resid_dofs]
         else:
-            ri = np.zeros([self.ncomponents, self.ndof])
+            ri = np.zeros([self.ncomponents, len(resid_dofs)])
         # forces, -Σf
         for f in self.forces.values():
-            ri = ri - f(self, x_wec, x_opt, waves)
+            ri = ri - f(self, x_wec, x_opt, waves)[:,resid_dofs]
         return self.dofmat_to_vec(ri)
 
     # solve
@@ -614,6 +615,7 @@ class WEC:
         bounds_wec: Optional[Bounds] = None,
         bounds_opt: Optional[Bounds] = None,
         callback: Optional[TStateFunction] = None,
+        resid_dofs: Optional[ndarray] = None,
         ) -> list[OptimizeResult]:
         """Simulate WEC dynamics using a pseudo-spectral solution
         method and returns the raw results dictionary produced by
@@ -791,7 +793,10 @@ class WEC:
             def scaled_resid_fun(x):
                 x_s = x/scale
                 x_wec, x_opt = self.decompose_state(x_s)
-                return self.residual(x_wec, x_opt, wave)
+                if resid_dofs is None:
+                    return self.residual(x_wec, x_opt, wave, range(self.ndof))
+                else: 
+                    return self.residual(x_wec, x_opt, wave, resid_dofs)
 
             eq_cons = {'type': 'eq', 'fun': scaled_resid_fun}
             if use_grad:

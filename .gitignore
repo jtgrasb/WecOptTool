@@ -15,3 +15,10 @@ results*
 
 # Jupyter notebooks
 */.ipynb_checkpoints/*
+/examples/WEC-Sim/slprj
+examples/WEC-Sim/hydroData/Added_Mass.png
+examples/WEC-Sim/hydroData/Excitation_Magnitude.png
+examples/WEC-Sim/hydroData/Excitation_Phase.png
+examples/WEC-Sim/hydroData/Radiation_Damping.png
+examples/WEC-Sim/hydroData/Radiation_IRFs.png
+/examples/WEC-Sim/output

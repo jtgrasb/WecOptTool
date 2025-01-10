@@ -1,0 +1,53 @@
+
+WEC-Sim Input From Standard wecSimInputFile.m Of Case Directory... 
+WEC-Sim: An open-source code for simulating wave energy converters
+Version: 6.1
+
+Initializing the Simulation Class...
+	Case Dir: C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim 
+Elapsed time is 0.918650 seconds.
+
+WEC-Sim Pre-processing ...   
+	Infinite water depth specified in BEM and "waves.waterDepth" not specified in input file.
+Set water depth to 200m for visualization.
+Elapsed time is 0.233622 seconds.
+
+WEC-Sim Simulation Settings:
+	Start Time                     (sec) = 0
+	End Time                       (sec) = 400
+	Time Step Size                 (sec) = 0.1
+	Ramp Function Time             (sec) = 100
+	 Number of Time Steps     = 4000 
+
+Wave Environment: 
+	Wave Type                            = Regular Waves (Constant Hydrodynamic Coefficients)
+	Wave Height, height (m)                   = 2.5
+	Wave Period, period (sec)                 = 8
+
+List of Body: Number of Bodies = 1 
+
+	***** Body Number 1, Name: rect *****
+	Body CG                          (m) = [-5,0,0]
+	Body Mass                       (kg) = 4000 
+	Body Moments of Inertia       (kgm2) = [100,100,100]
+	Body Products of Inertia      (kgm2) = [0,0,0]
+
+List of PTO(s): Number of PTOs = 1 
+
+	***** PTO Name: PTO1 *****
+	PTO Stiffness           (N/m;Nm/rad) = 0
+	PTO Damping           (Ns/m;Nsm/rad) = 100000
+
+List of Constraint(s): Number of Constraints = 2 
+
+	***** Constraint Name: Constraint1 *****
+
+	***** Constraint Name: Constraint2 *****
+
+
+Simulating the WEC device defined in the SimMechanics model C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim\attenuator.slx...   
+Elapsed time is 0.342429 seconds.
+Elapsed time is 9.410798 seconds.
+
+Post-processing and saving...   
+Elapsed time is 1.247538 seconds.
