@@ -2,10 +2,10 @@
 
 %% hydro data
 hydro = struct();
-hydro = readCAPYTAINE(hydro,'attenuator.nc');
-hydro = radiationIRF(hydro,60,[],[],[],[]);
+hydro = readCAPYTAINE(hydro,'attenuator2Bod.nc','2_bod');
+hydro = radiationIRF(hydro,[],[],[],[],[]);
 hydro = radiationIRFSS(hydro,[],[]);
-hydro = excitationIRF(hydro,157,[],[],[],[]);
+hydro = excitationIRF(hydro,[],[],[],[],[]);
 writeBEMIOH5(hydro)
 
 %% Plot hydro data

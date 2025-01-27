@@ -1,4 +1,5 @@
 %Example of user input MATLAB file for post processing
+close all
 
 %Plot waves
 waves.plotElevation(simu.rampTime);
@@ -14,9 +15,14 @@ output.plotResponse(1,3);
 output.plotForces(1,3);
 
 figure()
-plot(output.ptos.time,output.ptos.position(:,5))
+plot(output.ptos.time,output.ptos.position(:,5)*180/pi)
 xlabel('time (s)')
-ylabel('PTO rotation (rad)')
+ylabel('PTO rotation (deg)')
+
+figure()
+plot(output.ptos.time,output.ptos.powerInternalMechanics(:,5))
+xlabel('time (s)')
+ylabel('Mech power (W)')
  
 
 %Save waves and response as video

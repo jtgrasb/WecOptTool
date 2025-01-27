@@ -1,53 +1,84 @@
 
 WEC-Sim Input From Standard wecSimInputFile.m Of Case Directory... 
 WEC-Sim: An open-source code for simulating wave energy converters
-Version: 6.1
+Version: 6.1.2
 
 Initializing the Simulation Class...
 	Case Dir: C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim 
-Elapsed time is 0.918650 seconds.
+Elapsed time is 1.237191 seconds.
 
 WEC-Sim Pre-processing ...   
 	Infinite water depth specified in BEM and "waves.waterDepth" not specified in input file.
 Set water depth to 200m for visualization.
-Elapsed time is 0.233622 seconds.
+Elapsed time is 0.267263 seconds.
 
 WEC-Sim Simulation Settings:
 	Start Time                     (sec) = 0
 	End Time                       (sec) = 400
 	Time Step Size                 (sec) = 0.1
 	Ramp Function Time             (sec) = 100
+	Convolution Integral Interval  (sec) = 60
 	 Number of Time Steps     = 4000 
 
 Wave Environment: 
-	Wave Type                            = Regular Waves (Constant Hydrodynamic Coefficients)
-	Wave Height, height (m)                   = 2.5
-	Wave Period, period (sec)                 = 8
+	Wave Type                            = Regular Waves (Convolution Integral Calculation)
+	Wave Height, height (m)                   = 0.5
+	Wave Period, period (sec)                 = 7.4371
 
-List of Body: Number of Bodies = 1 
+List of Body:
+ Number of Hydro Bodies = 2 
 
 	***** Body Number 1, Name: rect *****
 	Body CG                          (m) = [-5,0,0]
 	Body Mass                       (kg) = 4000 
-	Body Moments of Inertia       (kgm2) = [100,100,100]
+	Body Moments of Inertia       (kgm2) = [100,1661.67,100]
 	Body Products of Inertia      (kgm2) = [0,0,0]
 
-List of PTO(s): Number of PTOs = 1 
+	***** Body Number 2, Name: rect *****
+	Body CG                          (m) = [-15,0,0]
+	Body Mass                       (kg) = 4000 
+	Body Moments of Inertia       (kgm2) = [100,1661.67,100]
+	Body Products of Inertia      (kgm2) = [0,0,0]
+
+List of PTO(s): Number of PTOs = 2 
 
 	***** PTO Name: PTO1 *****
 	PTO Stiffness           (N/m;Nm/rad) = 0
-	PTO Damping           (Ns/m;Nsm/rad) = 100000
+	PTO Damping           (Ns/m;Nsm/rad) = 10000
 
-List of Constraint(s): Number of Constraints = 2 
+	***** PTO Name: PTO2 *****
+	PTO Stiffness           (N/m;Nm/rad) = 0
+	PTO Damping           (Ns/m;Nsm/rad) = 10000
+
+List of Constraint(s): Number of Constraints = 3 
 
 	***** Constraint Name: Constraint1 *****
 
 	***** Constraint Name: Constraint2 *****
 
+	***** Constraint Name: Constraint3 *****
 
-Simulating the WEC device defined in the SimMechanics model C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim\attenuator.slx...   
-Elapsed time is 0.342429 seconds.
-Elapsed time is 9.410798 seconds.
+
+Simulating the WEC device defined in the SimMechanics model C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim\attenuator2Bod.slx...   
+Elapsed time is 0.183269 seconds.
+Elapsed time is 13.256526 seconds.
 
 Post-processing and saving...   
-Elapsed time is 1.247538 seconds.
+{Intermediate dot '.' indexing produced a comma-separated list with 2 values, but it must produce a single value when followed by subsequent indexing operations.
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('userDefinedFunctions', 'C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim\userDefinedFunctions.m', 18)" style="font-weight:bold">userDefinedFunctions</a> (<a href="matlab: opentoline('C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim\userDefinedFunctions.m',18,0)">line 18</a>)
+plot(output.ptos.time,output.ptos.position(:,5)*180/pi)
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('stopWecSim', 'C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\functions\stopWecSim.m', 34)" style="font-weight:bold">stopWecSim</a> (<a href="matlab: opentoline('C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\functions\stopWecSim.m',34,0)">line 34</a>)
+    userDefinedFunctions;
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('run', 'C:\Program Files\MATLAB\R2023b\toolbox\matlab\lang\run.m', 99)" style="font-weight:bold">run</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2023b\toolbox\matlab\lang\run.m',99,0)">line 99</a>)
+evalin('caller', strcat(script, ';'));
+
+Error in <a href="matlab:matlab.internal.language.introspective.errorDocCallback('wecSim', 'C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\wecSim.m', 56)" style="font-weight:bold">wecSim</a> (<a href="matlab: opentoline('C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\wecSim.m',56,0)">line 56</a>)
+run('stopWecSim');
+
+<a href="matlab:helpview('matlab','error_index_expected_one_output_from_intermediate_indexing')" style="font-weight:bold">Related documentation</a>
+} 
+clear
+wecSimMCR
