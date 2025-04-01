@@ -5,12 +5,12 @@ Version: 6.1.2
 
 Initializing the Simulation Class...
 	Case Dir: C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim 
-Elapsed time is 0.859905 seconds.
+Elapsed time is 2.158471 seconds.
 
 WEC-Sim Pre-processing ...   
 	Infinite water depth specified in BEM and "waves.waterDepth" not specified in input file.
 Set water depth to 200m for visualization.
-Elapsed time is 0.365328 seconds.
+Elapsed time is 0.455704 seconds.
 
 WEC-Sim Simulation Settings:
 	Start Time                     (sec) = 0
@@ -21,7 +21,7 @@ WEC-Sim Simulation Settings:
 
 Wave Environment: 
 	Wave Type                            = Regular Waves (Constant Hydrodynamic Coefficients)
-	Wave Height, height (m)                   = 0.5
+	Wave Height, height (m)                   = 0.01
 	Wave Period, period (sec)                 = 7.4371
 
 List of Body:
@@ -43,11 +43,11 @@ List of PTO(s): Number of PTOs = 2
 
 	***** PTO Name: PTO1 *****
 	PTO Stiffness           (N/m;Nm/rad) = 0
-	PTO Damping           (Ns/m;Nsm/rad) = 10000
+	PTO Damping           (Ns/m;Nsm/rad) = 0
 
 	***** PTO Name: PTO2 *****
 	PTO Stiffness           (N/m;Nm/rad) = 0
-	PTO Damping           (Ns/m;Nsm/rad) = 10000
+	PTO Damping           (Ns/m;Nsm/rad) = 0
 
 List of Constraint(s): Number of Constraints = 3 
 
@@ -59,8 +59,8 @@ List of Constraint(s): Number of Constraints = 3
 
 
 Simulating the WEC device defined in the SimMechanics model C:\Users\jtgrasb\Documents\GitHub\WecOptTool\examples\WEC-Sim\attenuator2Bod.slx...   
-Elapsed time is 1.178328 seconds.
-Elapsed time is 15.587353 seconds.
+Elapsed time is 0.844422 seconds.
+Elapsed time is 15.970740 seconds.
 
 Post-processing and saving...   
-Elapsed time is 3.859392 seconds.
+Elapsed time is 4.926993 seconds.
