@@ -96,15 +96,15 @@ if __name__ == '__main__':
     build = args.build[0]
     if build == 'debug':
         print(f'Building docs in current branch...')
-        build_doc('latest', '', '', build)
+        build_doc('latest', 'dev', 'main', build)
         move_pages()
     else:
         home_name = 'latest'
         with open(os.path.join(docs_dir, 'versions.yaml'), 'r') as v_file:
             versions = yaml.safe_load(v_file)
         home_branch = versions[home_name]
-        build_doc(home_name, home_branch, home_branch, build)
-        move_pages()
+        #build_doc(home_name, home_branch, home_branch, build)
+        #move_pages()
         for name, tag in versions.items():
             if name != home_name:
                 build_doc(name, tag, home_branch, build)
