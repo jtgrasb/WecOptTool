@@ -96,7 +96,7 @@ if __name__ == '__main__':
     build = args.build[0]
     if build == 'debug':
         print(f'Building docs in current branch...')
-        build_doc('latest', 'dev', 'main', build)
+        build_doc('latest', 'dev', 'main', 'production')
         move_pages()
     else:
         home_name = 'latest'
