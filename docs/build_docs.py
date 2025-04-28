@@ -60,9 +60,9 @@ def build_doc(version, tag, home_branch, build):
     if build != 'debug':
         os.environ['current_version'] = version
         subprocess.run(f'git checkout {tag}', shell=True)
-        subprocess.run(
-            f"git checkout {home_branch} -- {os.path.join(source_dir, 'conf.py')}",
-            shell=True)
+        #subprocess.run(
+        #    f"git checkout {home_branch} -- {os.path.join(source_dir, 'conf.py')}",
+        #    shell=True)
         subprocess.run(
             f"git checkout {home_branch} -- {os.path.join(docs_dir, 'versions.yaml')}",
             shell=True)
