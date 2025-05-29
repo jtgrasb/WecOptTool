@@ -553,7 +553,7 @@ class WEC:
         omega = freqs * 2*np.pi
         omega0 = np.expand_dims(omega, [1,2])
         transfer_func = impedance * (1j*omega0)
-        transfer_func0 = np.expand_dims(hydrostatic_stiffness, 2)
+        transfer_func0 = np.expand_dims(hydrostatic_stiffness, 0)
         transfer_func = np.concatenate([transfer_func0, transfer_func], axis=0)
         transfer_func = -1 * transfer_func  # RHS of equation: ma = Σf
         force_impedance = force_from_rao_transfer_function(transfer_func)
