@@ -67,7 +67,7 @@ jobs:
     # if cache key has changed, create new cache
     - name: Update environment
       run: |
-        conda env update -n test-env -f environment.yml
+        # conda env update -n test-env -f environment.yml
         # mamba install pip
       if: steps.cache.outputs.cache-hit != 'true'
     # <<< Cache the conda environment
