@@ -53,6 +53,8 @@ jobs:
         echo "  - python=${{ matrix.python-version }}" >> environment.yml
         echo "  - capytaine" >> environment.yml
         echo "  - wavespectra" >> environment.yml
+        echo "  - jax" >> environment.yml  # Add jax here
+        echo "  - jaxlib" >> environment.yml  # Optionally add jaxlib
         cat environment.yml
 
     # use the cache if it exists
