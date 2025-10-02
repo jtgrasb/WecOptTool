@@ -81,10 +81,10 @@ jobs:
     - name: Install WecOptTool
       shell: bash -l {0}
       run: |
-        conda activate test-env
-        python3 -m pip install --upgrade pip
-        pip3 install gmsh pygmsh coveralls pytest
-        pip3 install .
+        mamba activate test-env # conda activate test-env
+        # python3 -m pip install --upgrade pip
+        mamba install gmsh pygmsh coveralls pytest # pip3 install gmsh pygmsh coveralls pytest
+        mamba install --use-local . # pip install .
 
     # run all tests & coverage
     - name: Run Test
