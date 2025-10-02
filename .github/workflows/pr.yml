@@ -53,8 +53,6 @@ jobs:
         echo "  - python=${{ matrix.python-version }}" >> environment.yml
         echo "  - capytaine" >> environment.yml
         echo "  - wavespectra" >> environment.yml
-        echo "  - jax" >> environment.yml  # Add jax here
-        echo "  - jaxlib" >> environment.yml  # Optionally add jaxlib
         cat environment.yml
 
     # use the cache if it exists
@@ -69,7 +67,7 @@ jobs:
     # if cache key has changed, create new cache
     - name: Update environment
       run: |
-        mamba env update -n test-env -f environment.yml
+        conda env update -n test-env -f environment.yml
         # mamba install pip
       if: steps.cache.outputs.cache-hit != 'true'
     # <<< Cache the conda environment
@@ -83,11 +81,10 @@ jobs:
     - name: Install WecOptTool
       shell: bash -l {0}
       run: |
-        eval "$(mamba shell hook --shell bash)"  # Initialize mamba in the current shell
-        mamba activate test-env # conda activate test-env
-        # python3 -m pip install --upgrade pip
-        mamba install gmsh pygmsh coveralls pytest # pip3 install gmsh pygmsh coveralls pytest
-        # mamba install . # pip install .
+        conda activate test-env
+        python3 -m pip install --upgrade pip
+        pip3 install gmsh pygmsh coveralls pytest
+        pip3 install -e .
 
     # run all tests & coverage
     - name: Run Test
