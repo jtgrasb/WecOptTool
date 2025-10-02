@@ -81,7 +81,7 @@ jobs:
     - name: Install WecOptTool
       shell: bash -l {0}
       run: |
-        mamba shell init
+        eval "$(mamba shell hook --shell bash)"  # Initialize mamba in the current shell
         mamba activate test-env # conda activate test-env
         # python3 -m pip install --upgrade pip
         mamba install gmsh pygmsh coveralls pytest # pip3 install gmsh pygmsh coveralls pytest
