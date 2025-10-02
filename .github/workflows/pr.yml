@@ -67,8 +67,8 @@ jobs:
     # if cache key has changed, create new cache
     - name: Update environment
       run: |
-        echo "skipping mamba install" # mamba env update -n test-env -f environment.yml
-        mamba install pip
+        mamba env update -n test-env -f environment.yml
+        # mamba install pip
       if: steps.cache.outputs.cache-hit != 'true'
     # <<< Cache the conda environment
 
