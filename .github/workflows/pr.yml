@@ -85,7 +85,7 @@ jobs:
         mamba activate test-env # conda activate test-env
         # python3 -m pip install --upgrade pip
         mamba install gmsh pygmsh coveralls pytest # pip3 install gmsh pygmsh coveralls pytest
-        mamba install --use-local . # pip install .
+        mamba install . # pip install .
 
     # run all tests & coverage
     - name: Run Test
