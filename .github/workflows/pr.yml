@@ -86,7 +86,9 @@ jobs:
     # run all tests & coverage
     - name: Run Test
       shell: bash -l {0}
-      run: coverage run -m pytest
+      run: |
+        --cache-clear
+        coverage run -m pytest
 
     # upload coverage data
     - name: Upload coverage data to coveralls.io
