@@ -50,3 +50,8 @@ geometry = [
     "gmsh",
     "pygmsh",
 ]
+
+[tool.coverage]
+omit = [
+    "*/_netCDF4.pyx",
+]
