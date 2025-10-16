@@ -87,7 +87,7 @@ jobs:
     - name: Run Test
       shell: bash -l {0}
       run: |
-        --cache-clear
+        pytest --cache-clear
         coverage run -m pytest
 
     # upload coverage data
