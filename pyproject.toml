@@ -51,7 +51,3 @@ geometry = [
     "pygmsh",
 ]
 
-[tool.coverage]
-omit = [
-    "*/tests/*",
-]
