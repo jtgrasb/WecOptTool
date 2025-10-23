@@ -53,5 +53,5 @@ geometry = [
 
 [tool.coverage.run]
 omit = [
-    "src/netCDF4/_netcdf4.pyx",
+    "WecOptTool/src/netCDF4/_netcdf4.pyx",
 ]
