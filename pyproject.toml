@@ -53,5 +53,5 @@ geometry = [
 
 [tool.coverage.run]
 omit = [
-    "**/*.pyx",
+    "**/_netcdf4.pyx",
 ]
