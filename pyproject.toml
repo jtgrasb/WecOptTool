@@ -53,8 +53,5 @@ geometry = [
 
 [tool.coverage.run]
 omit = [
-    "*/tests/*",
     "**/*.pyx",
-    "**/*.c",
-    "**/*.cpp",
 ]
