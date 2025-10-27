@@ -48,7 +48,9 @@ jobs:
     # run all tests & coverage
     - name: Run Test
       shell: bash -l {0}
-      run: coverage run --debug=all -m pytest
+      run: |
+        coverage run --debug=all -m pytest
+        coverage report
 
     # upload coverage data
     - name: Upload coverage data to coveralls.io
