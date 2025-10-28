@@ -42,8 +42,8 @@ jobs:
       run: |
         conda activate test-env
         python3 -m pip install --upgrade pip
-        pip3 install gmsh pygmsh coveralls pytest
-        pip3 install -e .
+        pip3 install gmsh pygmsh coveralls pytest jax jaxlib
+        pip3 install .
 
     # run all tests & coverage
     - name: Run Test
