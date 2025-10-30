@@ -56,18 +56,18 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: pip install --upgrade jax[cpu]
 
-    # install WecOptTool
-    - name: upgrade pip
-      shell: bash -l {0}
-      run: |
-        pip3 install .
-
     # Verify installation
     - name: Verify Installation
       shell: bash -l {0}
       run: |
         conda activate test-env
         pip3 list  # This will list all installed packages
+
+    # install WecOptTool
+    - name: pip install wecopttool
+      shell: bash -l {0}
+      run: |
+        pip3 install .
 
     # run all tests & coverage
     - name: Run Test
