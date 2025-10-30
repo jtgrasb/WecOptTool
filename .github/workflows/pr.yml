@@ -36,19 +36,31 @@ jobs:
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt-get install libglu1
 
-    # install WecOptTool, pytest/coveralls, and gmsh/pygmsh
-    - name: Install WecOptTool
+    - name: activate env
       shell: bash -l {0}
       run: |
         conda activate test-env
+
+    - name: upgrade pip
+      shell: bash -l {0}
+      run: |
         python3 -m pip install --upgrade pip
+
+    - name: pip install
+      shell: bash -l {0}
+      run: |
         pip3 install gmsh pygmsh coveralls pytest
-        pip3 install .
 
     # install jax on macos.
     - name: Install jax on macos
       if: matrix.os == 'macos-latest'
       run: pip install --upgrade jax[cpu]
+
+    # install WecOptTool
+    - name: upgrade pip
+      shell: bash -l {0}
+      run: |
+        pip3 install .
 
     # Verify installation
     - name: Verify Installation
