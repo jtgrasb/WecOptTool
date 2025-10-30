@@ -7,7 +7,7 @@ Initializing the Simulation Class...
 WEC-Sim Pre-processing ...   
 	Infinite water depth specified in BEM and "waves.waterDepth" not specified in input file.
 Set water depth to 200m for visualization.
-Elapsed time is 0.244345 seconds.
+Elapsed time is 0.680382 seconds.
 
 WEC-Sim Simulation Settings:
 	Start Time                     (sec) = 0
@@ -18,7 +18,7 @@ WEC-Sim Simulation Settings:
 
 Wave Environment: 
 	Wave Type                            = Regular Waves (Constant Hydrodynamic Coefficients)
-	Wave Height, height (m)                   = 0.1
+	Wave Height, height (m)                   = 0.2
 	Wave Period, period (sec)                 = 8
 
 List of Body:
@@ -28,31 +28,34 @@ Number of Hydro Bodies = 2
 	***** Body Number 1, Name: rect 0 *****
 	Body CG                          (m) = [-1,0,0]
 	Body Mass                       (kg) = 500 
-	Body Moments of Inertia       (kgm2) = [10,10,10]
+	Body Moments of Inertia       (kgm2) = [0,83.3333,0]
 	Body Products of Inertia      (kgm2) = [0,0,0]
 
 	***** Body Number 2, Name: rect 1 *****
 	Body CG                          (m) = [-3,0,0]
 	Body Mass                       (kg) = 500 
-	Body Moments of Inertia       (kgm2) = [10,10,10]
+	Body Moments of Inertia       (kgm2) = [0,83.3333,0]
 	Body Products of Inertia      (kgm2) = [0,0,0]
 
 List of PTO(s): Number of PTOs = 2 
 
 	***** PTO Name: PTO1 *****
 	PTO Stiffness           (N/m;Nm/rad) = 0
-	PTO Damping           (Ns/m;Nsm/rad) = 1000
+	PTO Damping           (Ns/m;Nsm/rad) = 0
 
 	***** PTO Name: PTO2 *****
 	PTO Stiffness           (N/m;Nm/rad) = 0
-	PTO Damping           (Ns/m;Nsm/rad) = 1000
+	PTO Damping           (Ns/m;Nsm/rad) = 0
 
 List of Constraint(s): No Constraint in the system
 
-Elapsed time is 0.055754 seconds.
+Elapsed time is 0.171605 seconds.
 
 Simulating the WEC device defined in the SimMechanics model C:\Users\jtgrasb\Documents\GitHub\WecOptTool\attenuator\WEC-Sim\attenuator.slx...   
-Elapsed time is 8.597010 seconds.
+[Warning: The file containing block diagram '<a href="matlab:open_system ('attenuator')">attenuator</a>' has been changed on disk since it was loaded. Simulink is unable to reload it automatically because it is the root model.
+Close it and reopen it manually.] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('wecSim', 'C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\wecSim.m', 42)" style="font-weight:bold">wecSim</a> (<a href="matlab: opentoline('C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\wecSim.m',42,0)">line 42</a>)] 
+Elapsed time is 21.779209 seconds.
 
 Post-processing and saving...   
-Elapsed time is 0.950582 seconds.
+Elapsed time is 3.625986 seconds.
