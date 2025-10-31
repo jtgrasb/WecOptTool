@@ -50,3 +50,8 @@ geometry = [
     "gmsh",
     "pygmsh",
 ]
+
+[tool.coverage.run]
+source = [
+    "wecopttool",
+]
