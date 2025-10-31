@@ -7,7 +7,7 @@ Initializing the Simulation Class...
 WEC-Sim Pre-processing ...   
 	Infinite water depth specified in BEM and "waves.waterDepth" not specified in input file.
 Set water depth to 200m for visualization.
-Elapsed time is 0.680382 seconds.
+Elapsed time is 0.445549 seconds.
 
 WEC-Sim Simulation Settings:
 	Start Time                     (sec) = 0
@@ -18,7 +18,7 @@ WEC-Sim Simulation Settings:
 
 Wave Environment: 
 	Wave Type                            = Regular Waves (Constant Hydrodynamic Coefficients)
-	Wave Height, height (m)                   = 0.2
+	Wave Height, height (m)                   = 0.01
 	Wave Period, period (sec)                 = 8
 
 List of Body:
@@ -49,13 +49,13 @@ List of PTO(s): Number of PTOs = 2
 
 List of Constraint(s): No Constraint in the system
 
-Elapsed time is 0.171605 seconds.
+Elapsed time is 0.134430 seconds.
 
 Simulating the WEC device defined in the SimMechanics model C:\Users\jtgrasb\Documents\GitHub\WecOptTool\attenuator\WEC-Sim\attenuator.slx...   
 [Warning: The file containing block diagram '<a href="matlab:open_system ('attenuator')">attenuator</a>' has been changed on disk since it was loaded. Simulink is unable to reload it automatically because it is the root model.
 Close it and reopen it manually.] 
 [> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('wecSim', 'C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\wecSim.m', 42)" style="font-weight:bold">wecSim</a> (<a href="matlab: opentoline('C:\Users\jtgrasb\Documents\GitHub\WEC-Sim\source\wecSim.m',42,0)">line 42</a>)] 
-Elapsed time is 21.779209 seconds.
+Elapsed time is 14.919489 seconds.
 
 Post-processing and saving...   
-Elapsed time is 3.625986 seconds.
+Elapsed time is 2.032673 seconds.

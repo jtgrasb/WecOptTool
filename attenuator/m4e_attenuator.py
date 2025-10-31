@@ -36,7 +36,7 @@ BodyDataSym = symVars_definition(dataNames,globals())
 
 joints              = [[0, 1],[1, 2]] # Joint connectivity: [parent, child]
 types               = ['R', 'R']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
-parent_cg_to_joint  = [[0, 0],[-2,0]]# [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
+parent_cg_to_joint  = [[0, 0],[-1,0]]# [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
 joint_to_child_cg   = [[-1, 0],[-1,0]] # Vectors from the joint to the child's CG.
 prismatic_direction = [[np.nan, np.nan],[np.nan, np.nan]] # For prismatic joints, the direction vector; for others, [nan, nan] is used.
 prismatic_direction = normalize_prismatic(prismatic_direction)

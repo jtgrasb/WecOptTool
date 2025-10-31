@@ -22,6 +22,8 @@ plot(output.ptos(2).time,output.ptos(2).position(:,5)*180/pi)
 xlabel('time (s)')
 ylabel('pto rotation (deg)')
 legend('pto 1','pto 2')
+xlim([50,50+waves.period])
+grid on
 
 bodyLocsX = [1 3];
 armLength = -pto(2).location(1);
@@ -38,3 +40,5 @@ plot(output.ptos(2).time,theoreticalHeave2,'--')
 xlabel('time (s)')
 ylabel('position (m)')
 legend('body 1 heave','body 2 heave','body 1 theor','body 2 theor')
+xlim([50,50+waves.period])
+grid on
