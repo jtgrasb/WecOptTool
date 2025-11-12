@@ -55,7 +55,9 @@ jobs:
     # show coverage report
     - name: Report
       shell: bash -l {0}
-      run: coverage report
+      run: |
+        coverage report
+        coverage xml
 
     # upload coverage data
     - name: Upload coverage data to coveralls.io
