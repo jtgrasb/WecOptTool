@@ -51,6 +51,12 @@ jobs:
       run: |
         coverage run --debug=all -m pytest
 
+
+    # show coverage report
+    - name: Report
+      shell: bash -l {0}
+      run: coverage report
+
     # upload coverage data
     - name: Upload coverage data to coveralls.io
       shell: bash -l {0}
