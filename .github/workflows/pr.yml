@@ -42,13 +42,28 @@ jobs:
       run: |
         conda activate test-env
         python3 -m pip install --upgrade pip
-        pip3 install gmsh pygmsh coveralls pytest pytest-cov
+        pip3 install gmsh pygmsh coveralls pytest
         pip3 install .
 
     # run all tests & coverage
     - name: Run Test
       shell: bash -l {0}
-      run: pytest --cov=wecopttool --cov-report=xml
+      run: |
+        coverage run --debug=all -m pytest
+
+
+    # show coverage report
+    - name: Report
+      shell: bash -l {0}
+      run: |
+        coverage report
+        coverage xml
+
+    - name: Upload coverage report
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-report
+        path: coverage.xml
 
     # upload coverage data
     - name: Upload coverage data to coveralls.io
