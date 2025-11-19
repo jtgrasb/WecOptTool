@@ -2,7 +2,7 @@
 
 %% hydro data
 hydro = struct();
-hydro = readCAPYTAINE(hydro,'attenuator.nc','hs');
+hydro = readCAPYTAINE(hydro,'foswec.nc','hs');
 hydro = radiationIRF(hydro,60,[],[],[],[]);
 hydro = radiationIRFSS(hydro,[],[]);
 hydro = excitationIRF(hydro,157,[],[],[],[]);
