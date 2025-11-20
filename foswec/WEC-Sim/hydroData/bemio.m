@@ -4,7 +4,7 @@
 hydro = struct();
 hydro = readCAPYTAINE(hydro,'foswec.nc','hs');
 hydro = radiationIRF(hydro,60,[],[],[],[]);
-hydro = radiationIRFSS(hydro,[],[]);
+% hydro = radiationIRFSS(hydro,[],[]);
 hydro = excitationIRF(hydro,157,[],[],[],[]);
 writeBEMIOH5(hydro)
 
