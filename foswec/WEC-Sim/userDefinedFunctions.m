@@ -36,3 +36,15 @@ ylabel('pto rotation (deg)')
 legend('pto 1','pto 2')
 % xlim([50,50+waves.period])
 grid on
+
+% % plot mooring forces
+% figure()
+% plot(output.mooring(1).time,output.mooring(1).forceMooring(:,1))
+% hold on
+% plot(output.mooring(1).time,output.mooring(1).forceMooring(:,3))
+% plot(output.mooring(1).time,output.mooring(1).forceMooring(:,5))
+% xlabel('time (s)')
+% ylabel('mooring force (N)')
+% legend('surge','heave','pitch')
+% % xlim([50,50+waves.period])
+% grid on

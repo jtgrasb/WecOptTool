@@ -18,3 +18,5 @@ results*
 /foswec/WEC-Sim/slprj
 *.log
 /foswec/WEC-Sim/output
+/foswec/Alvaros_setup/WEC-Sim/slprj
+/foswec/foswec_compare/WEC-Sim/slprj

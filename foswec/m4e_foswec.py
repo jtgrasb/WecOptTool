@@ -36,18 +36,18 @@ BodyDataSym = symVars_definition(dataNames,globals())
 platformLength = 1.44 
 platformWidth = 0.76
 platformHeight = 0.05
-platformCG = [0, 0, -0.46]
+platformCG = [0, 0, -0.54]
 
-flapThickness = 0.05
+flapThickness = 0.04
 flapWidth = platformWidth
 flapHeight = 0.56
-flap1CG = [-platformLength/2, 0, -0.29] # from water surface/origin
-flap2CG = [platformLength/2, 0, -0.29] # from water surface/origin
+flap1CG = [-platformLength/2, 0, -0.36] # from water surface/origin
+flap2CG = [platformLength/2, 0, -0.36] # from water surface/origin
 
 joints              = [[0, 1],[1, 2],[1, 3]] # Joint connectivity: [parent, child]
 types               = ['F', 'R', 'R']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
-parent_cg_to_joint  = [[0, platformCG[2]],[flap1CG[0],0],[flap2CG[0],0]]# [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
-joint_to_child_cg   = [[np.nan, np.nan],[0,flap1CG[2]-platformCG[2]],[0,flap2CG[2]-platformCG[2]]] # Vectors from the joint to the child's CG.
+parent_cg_to_joint  = [[0, platformCG[2]],[flap1CG[0],0.04],[flap2CG[0],0.04]]# [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
+joint_to_child_cg   = [[np.nan, np.nan],[0,flap1CG[2]-(-0.5)],[0,flap2CG[2]-(-0.5)]] # Vectors from the joint to the child's CG.
 prismatic_direction = [[np.nan, np.nan],[np.nan, np.nan],[np.nan, np.nan]] # For prismatic joints, the direction vector; for others, [nan, nan] is used.
 prismatic_direction = normalize_prismatic(prismatic_direction)
 
