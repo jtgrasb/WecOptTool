@@ -15,3 +15,9 @@ results*
 
 # Jupyter notebooks
 */.ipynb_checkpoints/*
+/examples/FOSWEC_M4E/WEC-Sim/slprj
+*.asv
+*.log
+*.slxc
+*.autosave
+/examples/FOSWEC_M4E/WEC-Sim/output
