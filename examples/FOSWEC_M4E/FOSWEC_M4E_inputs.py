@@ -37,9 +37,11 @@ offset = 0.
 
 platformCG = [0, 0, -0.8]
 flapCenterDistanceApart = 1.44
-flap1CG     = [-flapCenterDistanceApart/2, 0, -0.29] # from water surface/origin
-flap2CG     = [flapCenterDistanceApart/2, 0, -0.29] # from water surface/origin
-flapHingeDepth = 0.53
+flapDraft  = 0.59 # 0.53 is based on matching impedance, 0.59 for fully submerged
+cgHeightAboveHinge = 0.17
+flap1CG     = [-flapCenterDistanceApart/2, 0, -flapDraft+cgHeightAboveHinge] # from water surface/origin
+flap2CG     = [flapCenterDistanceApart/2, 0, -flapDraft+cgHeightAboveHinge] # from water surface/origin
+flapHingeDepth = 0.59
 
 joints              = [[0, 1],[1, 2],[1, 3]] # Joint connectivity: [parent, child]
 types               = ['F', 'R', 'R']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating

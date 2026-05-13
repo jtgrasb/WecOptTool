@@ -20,7 +20,7 @@ simu.mcrMatFile = 'mcrCases.mat';
 
 % Regular Waves  
 waves = waveClass('regular');           % Initialize Wave Class and Specify Type                                 
-waves.height = 1;                     % Wave Height [m]
+waves.height = 2;                     % Wave Height [m]
 waves.period = 8;                       % Wave Period [s]
 
 %% Body Data
@@ -42,7 +42,7 @@ body(2).inertia = [1.19 1.19 1.19];
 % body(2).adjMassFactor = 1.5;
 body(2).linearDamping = zeros(6);
 % body(2).linearDamping(1,1) = 500;
-body(2).linearDamping(5,1) = 10;  
+% body(2).linearDamping(5,1) = 10;  
 body(2).linearDamping(5,5) = 100; 
 
 % flap 2
@@ -54,7 +54,7 @@ body(3).inertia = [1.19 1.19 1.19];
 % body(3).adjMassFactor = 1.5;
 body(3).linearDamping = zeros(6);
 % body(3).linearDamping(1,1) = 500;
-body(3).linearDamping(5,1) = 10;  
+% body(3).linearDamping(5,1) = 10;  
 body(3).linearDamping(5,5) = 100;  
 
 
@@ -85,14 +85,14 @@ pto(2).location = [0.72, 0, -0.59];                       % PTO Location [m]
 
 %% mooring to keep equilibrium
 totalMass = body(1).mass + body(2).mass + body(3).mass;
-displacedVolumePlatform = 0.1955;
-displacedVolumeFlaps = 2*0.0272;
+displacedVolumePlatform = 0.1956;
+displacedVolumeFlaps = 2*0.0309;
 displacedMass = simu.rho*(displacedVolumePlatform + displacedVolumeFlaps);
 
 mooring(1) = mooringClass('mooring');               % Initialize mooringClass
 mooring(1).location = [0, 0, -0.8];
 mooring(1).matrix.preTension(3) = -9.81*(displacedMass - totalMass); % -9.81*(displacedMass - totalMass)
-mooring(1).matrix.stiffness = diag([1e4 0 1e4 0 1e4 0]);
+mooring(1).matrix.stiffness = diag([1e5 0 1e5 0 1e5 0]);
 mooring(1).matrix.damping = diag([1e4 0 1e4 0 1e4 0]);
 
 
