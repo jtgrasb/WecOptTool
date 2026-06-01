@@ -33,11 +33,10 @@ Reference_frame_Origin = np.array([0,0])
 dataNames   = [] # Define symbolic variables for force points (for example, b1, b2, b3).
 BodyDataSym = symvars_definition(dataNames,globals())
 
-
 joints              = [[0, 1]] # Joint connectivity: [parent, child]
 types               = ['P']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
 parent_cg_to_joint  = [[0, 0]] # Vectors from parent's center-of-gravity (CG) to the joint location. Origin to cg
-joint_to_child_cg   = [[np.nan, np.nan]] # Vectors from the joint to the child's CG.
+joint_to_child_cg   = [[0, 0]] # Vectors from the joint to the child's CG.
 prismatic_direction = [[0, 1]] # For prismatic joints, the direction vector; for others, [nan, nan] is used.
 prismatic_direction = normalize_prismatic(prismatic_direction)
 
@@ -90,7 +89,7 @@ Q, QD, _, NDOF, _   = joint_system.coordinate_finder() # DO NOT MODIFY
 
 # If you are unsure what are the systems DOF run the example and you will see on screen
 ic                  = np.zeros(2*sum(NDOF)) # Multiplied by 2 because is position and velocity
-ic[2]               = 0 * np.pi / 180  # Initial position of the first joint
+#ic[2]               = 0 * np.pi / 180  # Initial position of the first joint
 
 # Parameters to loop over
 ForcesPointsNum = np.ones(len(ForcesPointsSym))
