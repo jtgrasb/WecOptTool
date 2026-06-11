@@ -630,25 +630,58 @@ def _expand_reduced_da(da, R0, dof_dim="influenced_dof", new_labels=None):
     # Restore original dim ordering
     return da_full.transpose(*da.dims)
 
+def _rename_reduced_dof_dim(da, old_dim="influenced_dof", new_dim="reduced_influenced_dof"):
+    if old_dim not in da.dims:
+        return da
+    return da.rename({old_dim: new_dim})
+
 # Post-process and convert reduced coordinate results back into full coordinates
 def post_process_M4E(wec, results, waves, nsubsteps, R0):
 
     wec_fdom, wec_tdom = wec.post_process(wec, results, waves, nsubsteps=nsubsteps)
 
     n_full, _ = R0.shape
-    labels = _full_dof_labels(n_full)
+    full_labels = _full_dof_labels(n_full)
 
     def transform_dataset(ds):
         data_vars = {}
 
         for name, da in ds.data_vars.items():
-            if name in ["pos", "vel", "acc", "force"] and "influenced_dof" in da.dims:
-                data_vars[name] = _expand_reduced_da(da, R0, new_labels=labels)
+            if name in ["pos", "vel", "acc"] and "influenced_dof" in da.dims:
+                data_vars[name] = _expand_reduced_da(
+                    da, R0, dof_dim="influenced_dof", new_labels=full_labels
+                )
+
+            elif name == "force" and "influenced_dof" in da.dims:
+                force_reduced = _rename_reduced_dof_dim(
+                    da, old_dim="influenced_dof", new_dim="reduced_influenced_dof"
+                )
+                data_vars["force"] = force_reduced
+
+                force_full = _expand_reduced_da(
+                    da, R0, dof_dim="influenced_dof", new_labels=full_labels
+                )
+                force_full.name = "force_full"
+                force_full.attrs = dict(force_full.attrs)
+                force_full.attrs["note"] = (
+                    "Reconstructed from reduced generalized forces using R0. "
+                    "This is not guaranteed to be the unique physical full-DOF force."
+                )
+                data_vars["force_full"] = force_full
+
             else:
                 data_vars[name] = da
 
-        coords = {k: v for k, v in ds.coords.items() if k != "influenced_dof"}
-        coords["influenced_dof"] = labels
+        # Only keep original coords that do NOT use influenced_dof
+        coords = {}
+        for cname, c in ds.coords.items():
+            if "influenced_dof" not in c.dims:
+                coords[cname] = c
+
+        # Add both coordinate sets explicitly
+        coords["influenced_dof"] = full_labels
+        if "influenced_dof" in ds.coords:
+            coords["reduced_influenced_dof"] = ds.coords["influenced_dof"].values
 
         return Dataset(data_vars=data_vars, coords=coords, attrs=ds.attrs)
 

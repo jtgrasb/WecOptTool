@@ -37,10 +37,10 @@ float_cg = [0.01, 0, 0.06]
 spar_cg = [0, 0, -1.3]
 
 joints              = [[0, 1],[1, 2]] # Joint connectivity: [parent, child]
-types               = ['F', 'P']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
-parent_cg_to_joint  = [[0, spar_cg[2]],[float_cg[0], float_cg[2]-spar_cg[2]]] # [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
-joint_to_child_cg   = [[np.nan, np.nan],[0, 0]] # Vectors from the joint to the child's CG.
-prismatic_direction = [[np.nan, np.nan],[0, 1]] # For prismatic joints, the direction vector; for others, [nan, nan] is used.
+types               = ['P', 'P']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
+parent_cg_to_joint  = [[0, spar_cg[2]],[0,-spar_cg[2]+float_cg[2]]]# [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
+joint_to_child_cg   = [[0, 0],[0, 0]] # Vectors from the joint to the child's CG.
+prismatic_direction = [[0, 1],[0, 1]] # For prismatic joints, the direction vector; for others, [nan, nan] is used.
 prismatic_direction = normalize_prismatic(prismatic_direction)
 
 # Points definition
