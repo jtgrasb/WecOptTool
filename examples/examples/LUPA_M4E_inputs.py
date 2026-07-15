@@ -45,7 +45,6 @@ lupa_cg = [x_LUPA, 0, z_LUPA]
 joints              = [[0, 1],[1, 2]] # Joint connectivity: [parent, child]
 types               = ['F', 'P']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
 parent_cg_to_joint  = [[0, spar_cg[2]],[float_cg[0], (float_cg[2]-spar_cg[2])]] # [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
-parent_cg_to_joint  = [[0, spar_cg[2]],[0, 0]]
 #parent_cg_to_joint = [
 #    [x_LUPA - float_cg[0], z_LUPA - float_cg[2]],
 #    [spar_cg[0] - float_cg[0], spar_cg[2] - float_cg[2]]

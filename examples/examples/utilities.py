@@ -515,6 +515,7 @@ def create_dataarray(
     
     return exc_coeff, Zi
 
+
 def setup_from_M4E(M4E_input_file, bem_data, fb_list, mass_list, inertia_list):
     """Setup WOT from M4E"""
 
