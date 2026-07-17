@@ -21,3 +21,4 @@ results*
 *.slxc
 *.autosave
 /examples/FOSWEC_M4E/WEC-Sim/output
+/examples/M4E_clean_examples/LUPA_WS/slprj
