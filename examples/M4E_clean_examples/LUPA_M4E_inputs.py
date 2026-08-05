@@ -2,8 +2,8 @@
 """
 Created on Thu Apr 10 10:18:55 2025
 
-@author: adiazfl
-Validated
+@author: jtgrasb
+
 """
 import sys
 import os

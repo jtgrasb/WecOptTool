@@ -44,14 +44,17 @@ class FOSWECFlapStudyBase:
         flap_inertia_cg=1.19,
         gear_ratio=3.75,
         torque_constant=1.021,
-        winding_resistance=1.082,
+        winding_resistance=1.028,
         winding_inductance=0.0,
-        drivetrain_inertia=0.00095,
-        drivetrain_friction=0.0,
+        drivetrain_inertia=0.05,
+        drivetrain_friction=None,
+        flap_side="aft",
+        #drivetrain_friction_aft=3.27 / 3.75**2,
+        #drivetrain_friction_bow=2.7 / 3.75**2,
         drivetrain_stiffness=0.0,
         max_torque_drive=40.0,
         max_rms_torque_drive=20.0,
-        max_pos= jnp.pi / 2,
+        max_pos= jnp.pi / 6,
         nsubsteps_constraint=4,
         nsubsteps_post=5,
         optim_maxiter=200,
@@ -101,6 +104,18 @@ class FOSWECFlapStudyBase:
         self.drivetrain_inertia = drivetrain_inertia
         self.drivetrain_friction = drivetrain_friction
         self.drivetrain_stiffness = drivetrain_stiffness
+
+        self.flap_side = flap_side
+
+        if drivetrain_friction is None:
+            if flap_side == "aft":
+                drivetrain_friction = 3.27 / gear_ratio**2
+            elif flap_side == "bow":
+                drivetrain_friction = 2.7 / gear_ratio**2
+            else:
+                raise ValueError("flap_side must be 'aft' or 'bow'.")
+
+        self.drivetrain_friction = drivetrain_friction
 
         # Constraints
         self.max_torque = max_torque_drive * torque_constant

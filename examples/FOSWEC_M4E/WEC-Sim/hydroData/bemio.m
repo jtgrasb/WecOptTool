@@ -2,7 +2,7 @@ clc; clear all; close all;
 
 %% hydro data
 hydro = struct();
-hydro = readCAPYTAINE(hydro,'foswec_jeff_hs_submerged.nc'); % hs included in nc file
+hydro = readCAPYTAINE(hydro,'foswec_short_period.nc'); % hs included in nc file
 hydro = radiationIRF(hydro,60,[],[],[],[]);
 % hydro = radiationIRFSS(hydro,[],[]);
 hydro = excitationIRF(hydro,157,[],[],[],[]);
@@ -10,6 +10,8 @@ hydro = excitationIRF(hydro,157,[],[],[],[]);
 % add more buoyancy force
 % hydro.Vo(2) = 0.04;
 % hydro.Vo(3) = 0.04;
+
+hydro.cb(1,1) = 0; % set center of buoyancy x to zero to avoid pitch
 
 writeBEMIOH5(hydro)
 

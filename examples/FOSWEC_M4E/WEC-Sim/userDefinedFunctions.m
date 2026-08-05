@@ -2,12 +2,13 @@
 close all
 
 figure()
-plot(output.bodies(1).time, output.bodies(1).position(:,1))
+plot(output.bodies(1).time, output.bodies(1).position(:,1)-body(1).centerGravity(1))
 hold on
-plot(output.bodies(1).time, output.bodies(1).position(:,3))
-plot(output.bodies(1).time, output.bodies(1).position(:,5)*180/pi)
+plot(output.bodies(1).time, output.bodies(1).position(:,3)-body(1).centerGravity(3))
+plot(output.bodies(1).time, output.bodies(1).position(:,5))
 xlabel('time (s)')
-ylabel('platform response (m or deg)')
+ylabel('platform response (m or rad)')
+title('new')
 legend('surge','heave','pitch')
 
 figure()

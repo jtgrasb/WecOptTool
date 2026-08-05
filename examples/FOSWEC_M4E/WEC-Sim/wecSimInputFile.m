@@ -6,6 +6,9 @@ simu.explorer = 'on';                   % Turn SimMechanics Explorer (on/off)
 simu.startTime = 0;                     % Simulation Start Time [s]
 simu.rampTime = 100;                    % Wave Ramp Time [s]
 simu.endTime = 300;                     % Simulation End Time [s]
+% simu.rampTime = 5*2.61;
+% simu.endTime = 20*2.61;
+% simu.dt = 2.61/200;
 simu.solver = 'ode4';                   % simu.solver = 'ode4' for fixed step & simu.solver = 'ode45' for variable step 
 simu.dt = 0.002; 							% Simulation time-step [s]
 simu.domainSize = 50;
@@ -20,13 +23,17 @@ simu.mcrMatFile = 'mcrCases.mat';
 
 % Regular Waves  
 waves = waveClass('regular');           % Initialize Wave Class and Specify Type                                 
-waves.height = 0.01;                     % Wave Height [m]
-waves.period = 8;                       % Wave Period [s]
+waves.height = 0.136;                     % Wave Height [m]
+waves.period = 2.61;                       % Wave Period [s]
+
+waves = waveClass('regular');           % Initialize Wave Class and Specify Type                                 
+waves.height = 2*0.136;                     % Wave Height [m]
+waves.period = 2.61;                       % Wave Period [s]
 
 %% Body Data
 
 % platform
-body(1) = bodyClass('hydroData/foswec_jeff_hs_submerged.h5');      
+body(1) = bodyClass('hydroData/foswec_short_period.h5');      
 body(1).geometryFile = 'geometry/platform.stl';    % Location of Geomtry File
 body(1).mass = 189.8; %'equilibrium';                   
 body(1).inertia = [30 30 30];  % Moment of Inertia [kg*m^2]
@@ -34,7 +41,7 @@ body(1).viz.opacity = 0.3;
 % body(1).adjMassFactor = 1.5;
 
 % flap 1
-body(2) = bodyClass('hydroData/foswec_jeff_hs_submerged.h5'); 
+body(2) = bodyClass('hydroData/foswec_short_period.h5'); 
 body(2).geometryFile = 'geometry/flap.stl'; 
 body(2).mass = 23.1; % mass of flaps is less than displaced mass to add buoyancy
 % body(2).mass = 12.1; 
@@ -43,10 +50,10 @@ body(2).inertia = [1.19 1.19 1.19];
 body(2).linearDamping = zeros(6);
 % body(2).linearDamping(1,1) = 500;
 % body(2).linearDamping(5,1) = 10;  
-body(2).linearDamping(5,5) = 100; 
+body(2).linearDamping(5,5) = 10; 
 
 % flap 2
-body(3) = bodyClass('hydroData/foswec_jeff_hs_submerged.h5'); 
+body(3) = bodyClass('hydroData/foswec_short_period.h5'); 
 body(3).geometryFile = 'geometry/flap.stl'; 
 body(3).mass = 23.1; 
 % body(3).mass = 12.1; 
@@ -55,7 +62,7 @@ body(3).inertia = [1.19 1.19 1.19];
 body(3).linearDamping = zeros(6);
 % body(3).linearDamping(1,1) = 500;
 % body(3).linearDamping(5,1) = 10;  
-body(3).linearDamping(5,5) = 100;  
+body(3).linearDamping(5,5) = 10;  
 
 
 %% PTO and Constraint Parameters
@@ -85,16 +92,15 @@ pto(2).location = [0.72, 0, -0.59];                       % PTO Location [m]
 
 %% mooring to keep equilibrium
 totalMass = body(1).mass + body(2).mass + body(3).mass;
-displacedVolumePlatform = 0.1956;
-displacedVolumeFlaps = 2*0.0309;
+displacedVolumePlatform = 0.195603434649359;
+displacedVolumeFlaps = 2*0.030856000000000;
 displacedMass = simu.rho*(displacedVolumePlatform + displacedVolumeFlaps);
 
 mooring(1) = mooringClass('mooring');               % Initialize mooringClass
 mooring(1).location = [0, 0, -0.8];
 mooring(1).matrix.preTension(3) = -9.81*(displacedMass - totalMass); % -9.81*(displacedMass - totalMass)
-mooring(1).matrix.stiffness = diag([1e5 0 1e5 0 1e5 0]);
-mooring(1).matrix.damping = diag([1e4 0 1e4 0 1e4 0]);
-
+mooring(1).matrix.stiffness = diag([8e3 0 2e5 0 2e5 0]);
+mooring(1).matrix.damping = diag([8e2 0 1e4 0 1e4 0]);
 
 %% added from foswec v2
 
