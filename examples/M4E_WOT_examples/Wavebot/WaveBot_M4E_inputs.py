@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr 10 10:18:55 2025
+Created on 8/19/2026
 
-@author: adiazfl
-Validated
+@author: jtgrasb
 """
 import sys
 import os
@@ -97,7 +96,7 @@ BodyDataNum     = np.ones(len(BodyDataSym))
 
 # Simulation
 TimeStep    = 0.01
-tspan       = 100.
+tspan       = 300.
 g           = 9.81                      # gravity
 gVec        = np.ones((len(types),1))   # Percentage of gravity acting on each body
 m0          = np.ones(len(types))

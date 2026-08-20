@@ -6,7 +6,7 @@ simu.explorer = 'off';                   % Turn SimMechanics Explorer (on/off)
 simu.startTime = 0;                     % Simulation Start Time [s]
 simu.rampTime = 100;                    % Wave Ramp Time [s]
 simu.endTime = 300;                     % Simulation End Time [s]
-simu.solver = 'ode4';                   % simu.solver = 'ode4' for fixed step & simu.solver = 'ode45' for variable step 
+simu.solver = 'ode45';                   % simu.solver = 'ode4' for fixed step & simu.solver = 'ode45' for variable step 
 simu.dt = 0.02; 							% Simulation time-step [s]
 simu.domainSize = 50;
 simu.rho = 1025;
@@ -44,12 +44,14 @@ body(2).inertia = [66.1686, 65.3344, 17.16];
 % Floating (3DOF) Joint
 constraint(1) = constraintClass('Constraint1'); % Initialize Constraint Class for Constraint1
 constraint(1).location = [0 0 -1.3];               % Constraint Location [m]
+constraint(1).location = [0 0 0.06];       %!!! 0,0,0.06        % Constraint Location [m]
 
 % Translational PTO
 pto(1) = ptoClass('PTO1');                      % Initialize PTO Class for PTO1
 pto(1).stiffness = 0;                           % PTO Stiffness [N/m]
 pto(1).damping = 0;                             % PTO Damping [N/(m/s)]
 pto(1).location = [0.01, 0, 0.06];                      % PTO Location [m]
+pto(1).location = [0, 0, 0.06];                      % PTO Location [m]
 
 %% Add mooring to maintain equilibrium
 

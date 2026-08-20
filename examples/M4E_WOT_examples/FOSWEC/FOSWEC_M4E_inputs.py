@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu Apr 10 10:18:55 2025
+Created on 8/19/2026
 
-@author: adiazfl
-Validated
+@author: jtgrasb
 """
 import sys
 import os
@@ -33,25 +32,19 @@ Reference_frame_Origin = np.array([0,0])
 dataNames   = [] # Define symbolic variables for force points (for example, b1, b2, b3).
 BodyDataSym = symvars_definition(dataNames,globals())
 
-m_float = 248.721
-float_cg = [0.01, 0, 0.06]
-m_spar = 175.536
-spar_cg = [0, 0, -1.3]
+platformCG = [0, 0, -0.8]
+flapCenterDistanceApart = 1.44
+flapDraft  = 0.59 
+cgHeightAboveHinge = 0.17
+flap1CG     = [-flapCenterDistanceApart/2, 0, -flapDraft+cgHeightAboveHinge] # from water surface/origin
+flap2CG     = [flapCenterDistanceApart/2, 0, -flapDraft+cgHeightAboveHinge] # from water surface/origin
+flapHingeDepth = 0.59
 
-x_LUPA = (m_float*float_cg[0] + m_spar*spar_cg[0])/(m_float + m_spar)
-z_LUPA = (m_float*float_cg[2] + m_spar*spar_cg[2])/(m_float + m_spar)
-lupa_cg = [x_LUPA, 0, z_LUPA]
-
-joints              = [[0, 1],[1, 2]] # Joint connectivity: [parent, child]
-types               = ['F', 'P']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
-parent_cg_to_joint  = [[0, spar_cg[2]],[float_cg[0], (float_cg[2]-spar_cg[2])]] # [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
-#parent_cg_to_joint = [
-#    [x_LUPA - float_cg[0], z_LUPA - float_cg[2]],
-#    [spar_cg[0] - float_cg[0], spar_cg[2] - float_cg[2]]
-#]
-#parent_cg_to_joint  = [[lupa_cg[0], lupa_cg[2]],[float_cg[0] - lupa_cg[0], float_cg[2] - lupa_cg[2]]]
-joint_to_child_cg   = [[np.nan, np.nan],[0, 0]] # Vectors from the joint to the child's CG.
-prismatic_direction = [[np.nan, np.nan],[0, 1]] # For prismatic joints, the direction vector; for others, [nan, nan] is used.
+joints              = [[0, 1],[1, 2],[1, 3]] # Joint connectivity: [parent, child]
+types               = ['F', 'R', 'R']  # Joint types: 'R' for revolute, 'P' for prismatic, 'F' for floating
+parent_cg_to_joint  = [[0, platformCG[2]],[flap1CG[0],-platformCG[2]-flapHingeDepth],[flap2CG[0],-platformCG[2]-flapHingeDepth]]# [[3, 0],[0,1]] # Vectors from parent's center-of-gravity (CG) to the joint location.
+joint_to_child_cg   = [[np.nan, np.nan],[0,flapHingeDepth+flap1CG[2]],[0,flapHingeDepth+flap2CG[2]]] # Vectors from the joint to the child's CG.
+prismatic_direction = [[np.nan, np.nan],[np.nan, np.nan],[np.nan, np.nan]] # For prismatic joints, the direction vector; for others, [nan, nan] is used.
 prismatic_direction = normalize_prismatic(prismatic_direction)
 
 # Points definition
@@ -112,7 +105,7 @@ BodyDataNum     = np.ones(len(BodyDataSym))
 
 # Simulation
 TimeStep    = 0.01
-tspan       = 100.
+tspan       = 300.
 g           = 9.81                      # gravity
 gVec        = np.ones((len(types),1))   # Percentage of gravity acting on each body
 m0          = np.ones(len(types))
